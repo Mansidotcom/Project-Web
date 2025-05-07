@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js program</title>
+</head>
+<body>
+    <!-- <button type="button" onclick="test()">this is a paragraph</button> -->
+    <form method="POST">
+        <input type="text" id="name" placeholder="Enter name"><br>
+        <input type="text" id="age" placeholder="Enter age"><br>
+        <button type="button" onclick="test()">Submit</button>
+    </form>
+    <table>
+        <body id="tbody">
+            
+        </body>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function test() {
+            // tableData=`
+            // <tr>
+            //     <th>First Name</th>
+            //     <th>Last Name</th>
+            //     <th>Email</th>
+            // </tr>
+            // `;
+            $.ajax({
+                data:{
+                    "name":$("#name").val(),
+                    "age":$("#age").val()
+                },
+                type:"POST",
+                url:"https://reqres.in/api/users",
+                success: function (res) {
+                    console.log(res);
+                    // data=res.data
+                    // $.each(data, function(i, item) {
+                    //     tableData +=`<tr>
+                    //             <td>${item.first_name}</td>
+                    //             <td>${item.last_name}</td>
+                    //             <td>${item.email}</td>
+                    //         </tr>`;
+                    // });
+                    // $("#tbody").html(tableData);
+                }
+            });
+            
+        }
+
+
+        
+    </script>
+</body>
+</html>
